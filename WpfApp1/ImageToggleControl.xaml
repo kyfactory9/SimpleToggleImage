@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="WpfApp1.ImageToggleControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="96" d:DesignWidth="96">
+
+    <UserControl.Resources>
+        <BitmapImage UriSource="Images/bulb-on.png" x:Key="bulbOn"/>
+        <BitmapImage UriSource="Images/bulb-off.png" x:Key="bulbOff"/>
+
+        <local:BooleanToImageConverter x:Key="Bool2Image"
+                                       On="{StaticResource bulbOn}"
+                                       Off="{StaticResource bulbOff}"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Image Source="{Binding Path=ImageToggle, Converter={StaticResource Bool2Image}}"/>
+    </Grid>
+</UserControl>
